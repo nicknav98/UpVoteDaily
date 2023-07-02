@@ -1,3 +1,5 @@
 #ignore local env 
-./app/upvote_env 
+./app/upvote_env/ 
 .DS_Store
+./app/__pycache__/
+
