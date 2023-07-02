@@ -3,18 +3,18 @@ networks:
   testNetwork:
     driver: bridge
 services:  
-  EMS_DB:
+  UpVote_DB:
     image: bitnami/postgresql:14
     ports:
       - '5432:5432'
     environment:
       - POSTGRESQL_PASSWORD=password
       - POSTGRESQL_USER=admin
-      - POSTGRESQL_DATABASE=EMS_DB
+      - POSTGRESQL_DATABASE=UpVote_DB
   pgAdmin:
     image: dpage/pgadmin4
     depends_on:
-      - EMS_DB
+      - UpVote_DB
     restart: always
     ports:
       - '5555:80'

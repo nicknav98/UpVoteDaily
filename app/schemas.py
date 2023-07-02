@@ -10,6 +10,10 @@ class SubmissionBase(BaseModel):
     class Config:
         orm_mode = True
 
+class Submission(SubmissionBase):
+    class Config:
+        orm_mode = True
+
 class SubmissionCreate(SubmissionBase):
     pass
 

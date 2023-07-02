@@ -31,9 +31,12 @@ def get_all_submissions(db: Session, skip: int = 0, limit: int = 100):
 def get_user_submission(db:Session, owner: str):
     return db.query(models.Submissions).filter(models.Submissions.owner == owner).all()
 
-def create_user_submission(db:Session, username: str, schemas.SubmissionCreate):
-    db_submission = models.Submissions()
-
+def create_user_submission(db:Session, user: schemas.User, submissiom: schemas.SubmissionCreate):
+    db_submission = models.Submissions(title = submissiom.title, url = submissiom.url, votes = submissiom.votes, submissionImage=submissiom.submissionImage, owner=user.username, avatar=user.avatar)
+    db.add(db_submission)
+    db.commit
+    db.refresh(db_submission)
+    return db_submission
 
 
 

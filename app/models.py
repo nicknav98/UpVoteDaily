@@ -4,25 +4,8 @@ from sqlalchemy.orm import relationship, Session
 from database import Base
 
 
-class Submissions(Base):
-    __table__name = 'submissions'
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, unique=True, index=True)
-    url = Column(String, unique=True, index=True)
-    votes = Column(Integer)
-    
-    submissionImage = Column(String, unique=True)
-    
-    owner = Column(String, ForeignKey('users.username'))
-    avatar = Column(String, ForeignKey('users.avatar'))
-
-
-
-
-
-
 class User(Base):
-    __table__name = 'users'
+    __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(120), unique=True, index=True)
@@ -33,3 +16,14 @@ class User(Base):
     submissions_by_owner = relationship("Submissions", back_populates='owner')
 
 
+class Submissions(Base):
+    __tablename__ = 'submissions'
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, unique=True, index=True)
+    url = Column(String, unique=True, index=True)
+    votes = Column(Integer)
+    
+    submissionImage = Column(String, unique=True)
+    
+    owner = Column(String, ForeignKey('users.username'))
+    avatar = Column(String, ForeignKey('users.avatar'))
