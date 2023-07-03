@@ -57,11 +57,8 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
 @app.post('/register', response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: SessionLocal = Depends(get_db)):
     hashed_password = password.get_password_hash(user.password)
-    db_user = crud.get_user_by_email(db, email=user.email)
-    db_username = crud.get_user_by_username(db, username=user.username)
+    db_user= crud.get_user_by_username(db, username=user.username)
     if db_user:
-        raise HTTPException(status_code=400, detail="User with this email already exists")
-    if db_username:
         raise HTTPException(status_code=400, detail="User with this username already exists")
     return crud.create_user(db=db, user=user, password_hashed=hashed_password)
 

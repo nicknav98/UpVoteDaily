@@ -28,6 +28,7 @@ class User(UserBase):
         orm_mode = True
 
 class UserCreate(UserBase):
+    username: str
     password: str
 
 class UserDB(User):
