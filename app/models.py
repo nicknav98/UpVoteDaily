@@ -13,8 +13,9 @@ class Submissions(Base):
     
     submissionImage = Column(String, unique=True)
     
-    owner = Column(String, ForeignKey('users.username'))
-    avatar = Column(String, ForeignKey('users.avatar'))
+    owner_name = Column(String, ForeignKey('users.username'))
+    owner = relationship("User", back_populates="submissions_by_owner", lazy=True)
+    
 
 
 class User(Base):

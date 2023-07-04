@@ -22,13 +22,13 @@ class UserBase(BaseModel):
 
 class User(UserBase):
     id: int
+    is_active: bool
     submissions_by_owner: List[SubmissionBase] 
 
     class Config:
         orm_mode = True
 
 class UserCreate(UserBase):
-    username: str
     password: str
 
 class UserDB(User):
