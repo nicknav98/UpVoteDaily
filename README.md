@@ -45,15 +45,16 @@ Further steps will be added once development procceeds
 
 
 ### TO BE EDITED ONCE API URL's and Tested and Functional
-#### Get all items
+#### Register New User
 
 ```http
-  GET /api/items
+  Post /register
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+| `username` | `string` | **Required**. account username |
+| `Password` | `string` | **Required**. account password |
 
 #### Get item
 
